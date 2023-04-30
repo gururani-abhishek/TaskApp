@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tasks</string>
+    <string name="bt_save_task_text">SAVE TASK</string>
+    <string name="et_enter_task_hint_text">Enter a Task!!</string>
+</resources>
