@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasks.databinding.FragmentTaskBinding
 import com.example.tasks.models.TaskDao
@@ -38,6 +39,13 @@ class TaskFragment : Fragment() {
         viewModel = ViewModelProvider(this, viewModelFactory)[TasksViewModel::class.java]
 
         binding.taskViewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
+
+// using data binding you can condense all these lines below to :
+// android:text = "@{viewModel.tasksString}"
+//        viewModel.tasksString.observe(viewLifecycleOwner, Observer { liveValueTasksString ->
+//            binding.tvTasksInfo.text = liveValueTasksString
+//        })
     }
 
     override fun onDestroy() {

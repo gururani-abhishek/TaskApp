@@ -32,8 +32,10 @@
             android:onClick="@{() -> taskViewModel.addTask()}"/>
 
         <TextView
+            android:id="@+id/tv_tasks_info"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:text="@{taskViewModel.tasksString}"/>
 
     </LinearLayout>
 </layout>
