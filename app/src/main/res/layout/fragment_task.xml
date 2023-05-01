@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".fragments.TaskFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.fragments.TaskFragment">
 
     <data>
         <variable
@@ -31,11 +32,17 @@
             android:layout_height="wrap_content"
             android:onClick="@{() -> taskViewModel.addTask()}"/>
 
-        <TextView
-            android:id="@+id/tv_tasks_info"
+<!--        <TextView-->
+<!--            android:id="@+id/tv_tasks_info"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:text="@{taskViewModel.tasksString}"/>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_tasks"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="@{taskViewModel.tasksString}"/>
-
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            tools:listitem="@layout/item_task"/>
     </LinearLayout>
 </layout>

@@ -1,15 +1,17 @@
-package com.example.tasks.fragments
+package com.example.tasks.view.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.tasks.databinding.FragmentTaskBinding
 import com.example.tasks.models.TaskDao
 import com.example.tasks.models.TaskDatabase
+import com.example.tasks.view.adapters.TasksRVAdapter
 import com.example.tasks.viewmodels.TasksViewModel
 import com.example.tasks.viewmodels.factories.TaskViewModelFactory
 
@@ -40,6 +42,14 @@ class TaskFragment : Fragment() {
 
         binding.taskViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+
+        // attaching an adapter to RV
+        val adapterRV = TasksRVAdapter()
+        binding.rvTasks.adapter = adapterRV
+
+        viewModel.tasks.observe(viewLifecycleOwner, Observer { liveValueTasks ->
+            adapterRV.data = liveValueTasks
+        })
 
 // using data binding you can condense all these lines below to :
 // android:text = "@{viewModel.tasksString}"

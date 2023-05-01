@@ -7,7 +7,7 @@ import com.example.tasks.models.Task
 import com.example.tasks.models.TaskDao
 import kotlinx.coroutines.launch
 
-class TasksViewModel(val dao : TaskDao) : ViewModel() {
+class TasksViewModel(private val dao : TaskDao) : ViewModel() {
     var taskName = ""
 
     fun addTask() {
@@ -19,7 +19,9 @@ class TasksViewModel(val dao : TaskDao) : ViewModel() {
     }
 
     val tasks = dao.getAllTasks()
-    val tasksString = tasks.map{
+
+    // no more required because now we are using recycler view.
+    /*val tasksString = tasks.map{
         tasks -> formatTasks(tasks)
     }
 
@@ -34,5 +36,5 @@ class TasksViewModel(val dao : TaskDao) : ViewModel() {
 
     private fun formatTask(task : Task) : String {
         return ("ID : ${task.taskId}" + '\n' + "Desc : ${task.taskDesc}" + '\n' + "Completed : ${task.taskDone}")
-    }
+    }*/
 }
