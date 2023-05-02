@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.tasks.databinding.FragmentTaskBinding
 import com.example.tasks.models.TaskDao
 import com.example.tasks.models.TaskDatabase
@@ -39,14 +40,15 @@ class TaskFragment : Fragment() {
         val dao = TaskDatabase.getInstance(application).taskDao
         viewModelFactory = TaskViewModelFactory(dao)
         viewModel = ViewModelProvider(this, viewModelFactory)[TasksViewModel::class.java]
-
         binding.taskViewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
 
+//        binding.rvTasks.layoutManager = LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL, false)
         // attaching an adapter to RV
         val adapterRV = TasksRVAdapter()
         binding.rvTasks.adapter = adapterRV
 
+        // updating data(in adapter RV) if it's tasks is updated.
         viewModel.tasks.observe(viewLifecycleOwner, Observer { liveValueTasks ->
             adapterRV.data = liveValueTasks
         })

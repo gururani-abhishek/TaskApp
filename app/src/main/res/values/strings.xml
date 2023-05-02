@@ -2,4 +2,7 @@
     <string name="app_name">Tasks</string>
     <string name="bt_save_task_text">SAVE TASK</string>
     <string name="et_enter_task_hint_text">Enter a Task!!</string>
+    <string name="task_id_text">Task Id :</string>
+    <string name="task_desc_text">Task Desc :</string>
+    <string name="task_done_done">Task Done :</string>
 </resources>
