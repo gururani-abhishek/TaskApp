@@ -1,9 +1,12 @@
 package com.example.tasks.view.adapters
 
+import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import android.widget.TextView
+import androidx.lifecycle.findViewTreeViewModelStoreOwner
 import androidx.recyclerview.widget.RecyclerView
 import com.example.tasks.R
 import com.example.tasks.models.Task
@@ -18,14 +21,12 @@ class TasksRVAdapter : RecyclerView.Adapter<TasksRVAdapter.TaskItemViewHolder>()
     }
 
     class TaskItemViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val tvTaskId : TextView
         private val tvTaskDesc : TextView
-        private val tvTaskDone : TextView
+        private val cbTaskDone : CheckBox
 
         init {
-            tvTaskId = itemView.findViewById(R.id.tv_task_id)
             tvTaskDesc = itemView.findViewById(R.id.tv_task_desc)
-            tvTaskDone = itemView.findViewById(R.id.tv_task_done)
+            cbTaskDone = itemView.findViewById(R.id.cb_task_done)
         }
 
         // passes the responsibility of onCreateViewHolder to ViewHolder class
@@ -39,9 +40,8 @@ class TasksRVAdapter : RecyclerView.Adapter<TasksRVAdapter.TaskItemViewHolder>()
         }
 
         fun bind(item : Task) {
-            tvTaskId.text = item.taskId.toString()
             tvTaskDesc.text = item.taskDesc
-            tvTaskDone.text = item.taskDone.toString()
+            cbTaskDone.isChecked = item.taskDone
         }
     }
 

@@ -5,4 +5,5 @@
     <string name="task_id_text">Task Id :</string>
     <string name="task_desc_text">Task Desc :</string>
     <string name="task_done_done">Task Done :</string>
+    <string name="cb_task_done_text">Done?</string>
 </resources>
